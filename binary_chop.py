@@ -18,10 +18,14 @@ def binarychop(subsequeue, elem):
 	:param elem 查找元素
 	:return 查找到返回对应的下标,没找到返回-1
 	"""
+	if not subsequeue:
+		return -1
 	left = 0
 	right = len(subsequeue)
 	while left <= right:
 		middle = (left + right) / 2
+		if middle>=len(subsequeue):
+			return -1
 		middle_value = subsequeue[middle]
 		if middle_value == elem:
 			return middle
@@ -44,8 +48,12 @@ def binarychop_recursion(subsequeue, left, right, elem):
 	:param elem:要查找的值
 	:return:查找到返回对应的下标,没找到返回-1
 	"""
+	if not subsequeue:
+		return -1
 	if left <= right:
 		middle = (left + right) / 2
+		if middle >= len(subsequeue):
+			return -1
 		middle_value = subsequeue[middle]
 		if middle_value == elem:
 			return middle
