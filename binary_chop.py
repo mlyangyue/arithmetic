@@ -31,11 +31,9 @@ def binarychop(subsequeue, elem):
 	if not subsequeue:
 		return -1
 	left = 0
-	right = len(subsequeue)
+	right = len(subsequeue)-1
 	while left <= right:
-		middle = (left + right) / 2
-		if middle>=len(subsequeue):
-			return -1
+		middle = left + (right-left) / 2
 		middle_value = subsequeue[middle]
 		if middle_value == elem:
 			return middle
@@ -61,9 +59,7 @@ def binarychop_recursion(subsequeue, left, right, elem):
 	if not subsequeue:
 		return -1
 	if left <= right:
-		middle = (left + right) / 2
-		if middle >= len(subsequeue):
-			return -1
+		middle = left + (right - left) / 2
 		middle_value = subsequeue[middle]
 		if middle_value == elem:
 			return middle
@@ -77,10 +73,10 @@ def binarychop_recursion(subsequeue, left, right, elem):
 
 if __name__ == "__main__":
 	subsequeue = range(1, 100, 2)
-	elem = 10
-	# index = binarychop(subsequeue, 10) # 非递归二分查找
+	elem = 11
+	# index = binarychop(subsequeue, elem) # 非递归二分查找
 
-	index = binarychop_recursion(subsequeue, 0, len(subsequeue), 11) # 递归二分查找
+	index = binarychop_recursion(subsequeue, 0, len(subsequeue)-1, elem) # 递归二分查找
 	if index != -1:
 		print subsequeue[index], index
 	else:
